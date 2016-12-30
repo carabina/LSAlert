@@ -51,7 +51,7 @@ class LSAlert: UIViewController {
     let color_content = UIColor.colorFromRGB(0xFFFFFF)///主视图背景颜色
     let color_title = UIColor.colorFromRGB(0x575757)///主标题字体颜色
     let color_subTitle = UIColor.colorFromRGB(0x797979)///主标题字体颜色
-  
+    
     
     
     init() {
@@ -74,25 +74,23 @@ class LSAlert: UIViewController {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
      */
-
+    
     /// Mark: - 初始化
     fileprivate func setupContentView() {
         v_content.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
         v_content.layer.cornerRadius = 5.0
         v_content.layer.masksToBounds = true
         v_content.layer.borderWidth = 0.5
-        v_content.addSubview(lab_title)
-        v_content.addSubview(text_subTitle)
         v_content.backgroundColor = color_content
         v_content.layer.borderColor = UIColor.colorFromRGB(0xCCCCCC).cgColor
         view.addSubview(v_content)
@@ -101,7 +99,7 @@ class LSAlert: UIViewController {
         lab_title.text = ""
         lab_title.numberOfLines = 1
         lab_title.textAlignment = .center
-        lab_title.font = UIFont(name: "Helvetica", size:25)
+        lab_title.font = UIFont(name: "Helvetica", size:22)
         lab_title.textColor = color_title
     }
     
@@ -123,7 +121,7 @@ class LSAlert: UIViewController {
         let width: CGFloat = w_contentView - (left*2)
         
         // Title
-        if self.lab_title.text != nil {
+        if self.lab_title.text?.isEmpty == false {
             lab_title.frame = CGRect(x: x, y: y, width: width, height: h_title)
             v_content.addSubview(lab_title)
             y += h_title + spacing
@@ -134,6 +132,7 @@ class LSAlert: UIViewController {
             let rect = subtitleString.boundingRect(with: CGSize(width: width, height: 0.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:self.text_subTitle.font!], context: nil)
             h_text = ceil(rect.size.height) + 10.0 > h_text ? h_text : ceil(rect.size.height) + 10.0
             text_subTitle.frame = CGRect(x: x, y: y, width: width, height: h_text)
+            v_content.addSubview(text_subTitle)
             y += h_text + spacing
         }
         
@@ -202,7 +201,7 @@ extension LSAlert{
         setupContentView()
         setupTitleLabel()
         setupSubtitleTextView()
-    
+        
         self.lab_title.text = title
         if subTitle != nil  {
             self.text_subTitle.text = subTitle
@@ -218,7 +217,7 @@ extension LSAlert{
             button.layer.cornerRadius = 5.0
             buttons.append(button)
         }
-    
+        
         if otherBtns != nil && (otherBtns.count) > 0 {
             for i in 0..<otherBtns.count {
                 let button: UIButton = UIButton.init(type: .custom)
