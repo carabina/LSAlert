@@ -187,11 +187,13 @@ class LSAlert: UIViewController {
         }, completion: nil)
     }
 }
+/// 按钮点击回调
+typealias btnClickBlock = (_ otherBtn: UIButton) -> Void
 extension LSAlert{
     
     
     //MARK: -alert 方法主体
-    func show(title : String? , subTitle : String? , cancelBtn: String , otherBtns : [String] , action : @escaping((_ otherBtn: UIButton) -> Void)) {
+    func show(title : String? , subTitle : String? , cancelBtn: String , otherBtns : [String] , action : btnClickBlock?) {
         userAction = action
         let window: UIWindow = UIApplication.shared.keyWindow!
         window.addSubview(view)
