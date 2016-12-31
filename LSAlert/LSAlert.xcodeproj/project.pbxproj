@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3115BD321E175A57006950C3 /* LSAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115BD311E175A57006950C3 /* LSAlertView.swift */; };
 		31ED49621E14A96B00C9BF01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED49611E14A96B00C9BF01 /* AppDelegate.swift */; };
 		31ED49641E14A96B00C9BF01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED49631E14A96B00C9BF01 /* ViewController.swift */; };
 		31ED49671E14A96B00C9BF01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31ED49651E14A96B00C9BF01 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3115BD311E175A57006950C3 /* LSAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSAlertView.swift; sourceTree = "<group>"; };
 		31ED495E1E14A96B00C9BF01 /* LSAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31ED49611E14A96B00C9BF01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31ED49631E14A96B00C9BF01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				31ED49741E14A9DC00C9BF01 /* LSAlert.swift */,
+				3115BD311E175A57006950C3 /* LSAlertView.swift */,
 			);
 			path = LSAlert;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			files = (
 				31ED49641E14A96B00C9BF01 /* ViewController.swift in Sources */,
 				31ED49751E14A9DC00C9BF01 /* LSAlert.swift in Sources */,
+				3115BD321E175A57006950C3 /* LSAlertView.swift in Sources */,
 				31ED49621E14A96B00C9BF01 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
