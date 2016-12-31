@@ -75,14 +75,31 @@ extension LSAlert{
     
     
     //MARK: -alert 方法主体
-    func show(title : String? , subTitle : String? , cancelBtn: String , otherBtns : [String] , action : btnClickBlock?) {
+    func show(title : String? , subTitle : String? , cancelBtn: String? , otherBtns : [String]? , action : btnClickBlock?) {
         userAction = action
         setupUI()
         v_content = LSAlertView()
         view.addSubview(v_content!)
-        v_content?.setLayout(title: title, subTitle: subTitle, cancelBtn: cancelBtn, otherBtns: otherBtns, target: self, action: #selector(clicked(_:)))
+        v_content?.setLayout(title: title, subTitle: subTitle, cancelBtn: cancelBtn, otherBtns: otherBtns, target: self, action: #selector(clicked(_:)) , cancel : #selector(doCancel(_:)))
         apper()
     }
+    /// 带图片的弹窗
+    ///
+    /// - Parameters:
+    ///   - title: 提示语
+    ///   - img: 图片
+    ///   - cancelBtn: 取消按钮
+    ///   - otherBtns: 其他按钮
+    ///   - action: 其他按钮点击事件
+    func show(title : String? , img : String? , cancelBtn: String? , otherBtns : [String]? , action : btnClickBlock?)  {
+        userAction = action
+        setupUI()
+        v_content = LSAlertView()
+        view.addSubview(v_content!)
+        v_content?.setLayout(title: title, img: img, cancelBtn: cancelBtn, otherBtns: otherBtns, target: self, action: #selector(clicked(_:)) , cancel : #selector(doCancel(_:)))
+        apper()
+    }
+    
     fileprivate func setupUI(){
         let window: UIWindow = UIApplication.shared.keyWindow!
         window.addSubview(view)

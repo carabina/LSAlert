@@ -9,12 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBAction func alertImg(_ sender: Any) {
+        LSAlert().show(title: "这是一个有图片的弹窗", img: "1.jpg", cancelBtn: "", otherBtns: ["知道了"], action: nil)
+    }
 
     @IBAction func alert(_ sender: Any) {
         LSAlert().show(title: "提示", subTitle: "这是一个自定义的alert", cancelBtn: "cancel", otherBtns: ["sure"]) { (btn) in
             print("按钮"+"\(btn.tag)"+"点击了")
         }
-        LSAlert().show(title: "提示", subTitle: "这是一个自定义的alert", cancelBtn: "cancel", otherBtns: ["sure"], action: nil)
+//        LSAlert().show(title: "提示", subTitle: "这是一个自定义的alert", cancelBtn: "cancel", otherBtns: ["sure"], action: nil)
+        
         
     }
     override func viewDidLoad() {

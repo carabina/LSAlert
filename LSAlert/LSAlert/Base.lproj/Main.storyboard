@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,6 +26,14 @@
                                 <state key="normal" title="LSAlert弹窗"/>
                                 <connections>
                                     <action selector="alert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Fe-D0-XLU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sa5-WZ-1j3">
+                                <rect key="frame" x="120" y="328" width="112" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="LSAlert弹出图片"/>
+                                <connections>
+                                    <action selector="alertImg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="amv-jO-zEl"/>
                                 </connections>
                             </button>
                         </subviews>
