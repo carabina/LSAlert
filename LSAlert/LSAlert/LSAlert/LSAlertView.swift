@@ -105,9 +105,10 @@ class LSAlertView: UIView {
         if iv.image != nil {
             iv.backgroundColor = UIColor.clear
             iv.contentMode = .scaleAspectFit
-            iv.frame = CGRect(x: x, y: y, width: width, height: width)
+            let w_img : CGFloat = ((iv.image?.size.width)!>width ? width : (iv.image?.size.width)!)
+            iv.frame = CGRect(x: x+(width-w_img)/2, y: y, width: w_img , height : w_img)
             addSubview(iv)
-            return y + width + spacing
+            return y + w_img + spacing
         }
         return y
     }
@@ -215,6 +216,27 @@ class LSAlertView: UIView {
         
         y = setlayoutBtns(x: x, y: y, width: width, cancelBtn: cancelBtn, otherBtns: otherBtns, target: target, action: action , cancel : cancel)
         
+        
+        frame = CGRect(x: (screen_width - w_contentView) / 2.0, y: (screen_height - y) / 2.0, width: w_contentView, height: y )
+        clipsToBounds = true
+        
+    }
+    /// 带有图片没有按钮
+    func setLayout(title : String? , img : String? ) {
+        setupContentView()
+        if title != nil  {
+            self.text_subTitle.text = title
+        }
+        if img != nil {
+            iv.image = UIImage.init(named: img!)
+        }
+        let x: CGFloat = left
+        var y: CGFloat = top
+        let width: CGFloat = w_contentView - (left*2)
+        
+        y = setlayoutImg(x: x, y: y, width: width)
+        
+        y = setlayoutSubtitle(x: x, y: y, width: width)
         
         frame = CGRect(x: (screen_width - w_contentView) / 2.0, y: (screen_height - y) / 2.0, width: w_contentView, height: y )
         clipsToBounds = true

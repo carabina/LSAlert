@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBAction func alertWithoutBtns(_ sender: Any) {
+        LSAlert().show(title: "这是一个有图片没有按钮的弹窗", img: "2.png")
+    }
     @IBAction func alertImg(_ sender: Any) {
         LSAlert().show(title: "这是一个有图片的弹窗", img: "1.jpg", cancelBtn: "", otherBtns: ["知道了"], action: nil)
     }

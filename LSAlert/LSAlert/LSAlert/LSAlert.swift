@@ -99,6 +99,19 @@ extension LSAlert{
         v_content?.setLayout(title: title, img: img, cancelBtn: cancelBtn, otherBtns: otherBtns, target: self, action: #selector(clicked(_:)) , cancel : #selector(doCancel(_:)))
         apper()
     }
+    /// 没有按钮 自动消失alert
+    ///
+    /// - Parameters:
+    ///   - title: 提示语
+    ///   - img: 提示图片
+    func show(title : String? , img : String? )  {
+        setupUI()
+        v_content = LSAlertView()
+        view.addSubview(v_content!)
+        v_content?.setLayout(title: title, img: img)
+        apper()
+        perform(#selector(doCancel(_:)), with: nil, afterDelay: 3.0)
+    }
     
     fileprivate func setupUI(){
         let window: UIWindow = UIApplication.shared.keyWindow!
