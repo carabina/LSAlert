@@ -115,50 +115,45 @@ class LSAlertView: UIView {
     /// 添加按钮
     fileprivate func setlayoutBtns(x:CGFloat , y: CGFloat , width : CGFloat , cancelBtn: String? , otherBtns : [String]? , target : Any? , action : Selector? , cancel : Selector?) -> CGFloat{
         buttons = []
-        if cancelBtn?.isEmpty == false {
-            let button: UIButton = UIButton.init(type: .custom)
-            button.setTitle(cancelBtn, for: UIControlState())
-            button.backgroundColor = color_cancel
-            button.isUserInteractionEnabled = true
-            button.addTarget(target, action: cancel!, for: UIControlEvents.touchUpInside)
-            button.tag = 0
-            button.layer.cornerRadius = 5.0
-            buttons.append(button)
-        }
+        
         
         if otherBtns != nil && (otherBtns?.count)! > 0 {
             for i in 0..<(otherBtns?.count)! {
                 let button: UIButton = UIButton.init(type: .custom)
-                button.setTitle(otherBtns?[i], for: UIControlState())
+                button.setTitle(otherBtns?[i], for: .normal)
                 button.backgroundColor = color_btn
-                button.addTarget(target, action: action!, for: UIControlEvents.touchUpInside)
+                button.addTarget(target, action: action!, for: .touchUpInside)
                 button.tag = i + 1
                 button.layer.cornerRadius = 5.0
                 buttons.append(button)
             }
         }
+        if cancelBtn?.isEmpty == false {
+            let button: UIButton = UIButton.init(type: .custom)
+            button.setTitle(cancelBtn, for: .normal)
+            button.backgroundColor = color_cancel
+            button.addTarget(target, action: cancel!, for: .touchUpInside)
+            button.tag = 0
+            button.layer.cornerRadius = 5.0
+            buttons.append(button)
+        }
         var yy = y
         if buttons.count > 2 {
             //两个btn以上
-            for i in 1 ..< buttons.count {
+            for i in 0 ..< buttons.count {
                 
-                buttons[i].frame = CGRect(x: x, y: y, width: w_contentView - x*2, height: h_btn)
+                buttons[i].frame = CGRect(x: x, y: yy, width: width, height: h_btn)
                 addSubview(buttons[i])
                 yy += h_btn + spacing
             }
-            
-            buttons[0].frame = CGRect(x: x, y: y, width: w_contentView - x*2, height: h_btn)
-            addSubview(buttons[0])
-            yy += h_btn + spacing
         }
         else if buttons.count == 1 || buttons.count == 2{
             //一个或者两个btn
             let count = buttons.count
             var buttonX = x
-            let w_btn : CGFloat = (w_contentView - x*(CGFloat(count+1)))/(CGFloat(count)) //btn的宽度
+            let w_btn : CGFloat = (width + x*2 - x*(CGFloat(count+1)))/(CGFloat(count)) //btn的宽度
             for i in 0 ..< buttons.count {
-                
-                buttons[i].frame = CGRect(x: buttonX, y: y, width:w_btn , height: h_btn)
+                buttons[i].frame = CGRect(x: buttonX, y: yy, width:w_btn , height: h_btn)
                 buttonX += x + w_btn
                 addSubview(buttons[i])
                 
